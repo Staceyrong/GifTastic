@@ -4,12 +4,16 @@
 }
 
 #singer-input {
-    margin: 20px 0;
+    margin: 30px 0;
     
     clear: both;
     overflow: auto;
     
     
+}
+
+label{
+    margin: 20px;
 }
 
 button {
@@ -22,7 +26,9 @@ button {
     padding: 10px 300px 600px 300px;
 }
 
-
+form {
+    margin: 20px;
+}
 
 #add-singer {
     background: green;
