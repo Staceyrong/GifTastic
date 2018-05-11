@@ -19,28 +19,35 @@ $.ajax({
 
         var p = $("<p>").text("Rating: " + results[j].rating);
         singerDiv.append(p);
-        var image = $("<img>");
+        var image = $("<img class ='gif'>");
         image.attr("src",results[j].images.fixed_height_still.url);
         singerDiv.append(image);
         $("#singer-view").prepend(singerDiv);
     }
-    
   });
-
+        $("#singer-view").empty();
 }
 
+ 
+$('body').on('click', '.gif', function() {
+  var src = $(this).attr("src");
+  if($(this).hasClass('playing')){
+     //stop
+     $(this).attr('src', src.replace(/\.gif/i, "_s.gif"))
+     $(this).removeClass('playing');
+  } else {
+    //play
+    $(this).addClass('playing');
+    $(this).attr('src', src.replace(/\_s.gif/i, ".gif"))
+  }
+});
 // Function for displaying singer data
 function renderButtons() {
-
-  // Deleting the singer prior to adding new animals
   // (this is necessary otherwise you will have repeat buttons)
   $("#buttons-view").empty();
 
   // Looping through the array of singers
   for (var i = 0; i < topics.length; i++) {
-
-    // Then dynamicaly generating buttons for each singer in the array
-    // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
     var a = $("<button>");
     // Adding a class of singer-btn to our button
     a.addClass("singer-btn");
